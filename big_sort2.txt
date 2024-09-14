@@ -1,0 +1,47 @@
+void sort_all_2(t_node **stack_a, t_node **stack_b, int total_index)
+{
+    t_node *current;
+    t_node *current_2;
+    int n;
+    int j;
+    int max_sorted_index;
+
+    max_sorted_index = total_index - 1;
+    while(total_index > 0)
+    {
+        n = 0;
+        j = 0;
+        current = *stack_b;
+        current_2 = (*stack_b)->previous;
+        while(current->index != max_sorted_index)
+        {    
+            current = current->next;
+            n++;
+        }
+        while (current_2->index != max_sorted_index)
+        {
+            current_2 = current_2->previous;
+            j++;
+        }
+        if (n <= j)
+        {
+            while(n > 0)
+            {
+                rb(stack_b);
+                n--;
+            }
+        }
+        else
+        {
+            while(j >= 0)
+            {
+                rrb(stack_b);
+                j--;
+            }
+        }
+        pa(stack_a, stack_b);
+        total_index--;
+        max_sorted_index--;
+    }
+
+}

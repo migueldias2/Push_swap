@@ -1,0 +1,124 @@
+/* void    sort_big(t_node **stack_a, t_node **stack_b, int count, int chunks)
+{
+    t_node *current;
+    t_node *current_2;
+    int chunk_size = count / chunks;
+    int lower_bound;
+    int upper_bound;
+    int i ;
+    int hold_first;
+    int hold_second;
+    int pushes;
+    int total_index;
+
+    total_index = count;
+    i = 1;
+    pushes = 0;
+    lower_bound = 0;
+    while (i <= chunks)
+    {
+        current = *stack_a;
+        current_2 = (*stack_a)->previous;
+        hold_first = 0;
+        hold_second = 0;
+        if (i == chunks)
+            upper_bound = total_index;
+        else
+            upper_bound = lower_bound + chunk_size;
+        while (!(current->index >= lower_bound && current->index < upper_bound))
+        {
+            current = current->next;
+            hold_first++;
+        }
+        while (!(current_2->index >= lower_bound && current_2->index < upper_bound))
+        {
+            current_2 = current_2->previous;
+            hold_second++;
+        }
+        if (hold_first < hold_second)
+        {
+            while(hold_first > 0)
+            {
+                ra(stack_a);
+                hold_first--;
+            }
+        }
+        else if ((hold_first > hold_second))
+        {
+            while(hold_second >= 0)
+            {
+                rra(stack_a);
+                hold_second--;
+            }
+        }
+        else
+        {
+            if (current->index < current_2->index)
+            {
+                while(hold_first > 0)
+                {
+                    ra(stack_a);
+                    hold_first--;
+                }
+            }
+            else
+            {
+                while(hold_second >= 0)
+                {
+                    rra(stack_a);
+                    hold_second--;
+                }
+            }
+        }
+        pb(stack_a, stack_b);
+        if ((*stack_b)->index < (*stack_b)->next->index)
+            rb(stack_b);
+        pushes++;
+        if (pushes == upper_bound)
+        {
+            lower_bound += chunk_size;
+            i++;
+        }
+    }
+    sort_all_2(stack_a, stack_b, total_index);
+} */
+
+typedef struct s_info {
+    int lb;  // lower_bound
+    int ub;  // upper_bound
+    int cs;  // chunk_size
+    int total;
+    int p;   // pushes
+    int i;
+} t_info;
+
+/* void    sort_3(t_node **stack_a)
+{
+    t_node *current;
+    int second;
+    int third;
+
+    current = *stack_a;
+    second = current->next->data;
+    third = current->previous->data;
+    if (current->data > second && current->data < third)
+        sa(stack_a);
+    else if (current->data < second && current->data > third)
+        rra(stack_a);
+    else if (current->data > second && current->data > third && second < third)
+    {
+        sa(stack_a);
+        rra(stack_a);
+        sa(stack_a);
+    }
+    else if (current->data < second && current->data < third && second > third)
+    {
+        rra(stack_a);
+        sa(stack_a);
+    }
+    else if (current->data > second && current->data > third && second > third)
+    {
+        ra(stack_a);
+        sa(stack_a);
+    }
+} */
