@@ -2,9 +2,13 @@
 NAME = push_swap
 
 # Source files
-SRC = main.c split.c aux_1.c aux_2.c aux_3.c \
-	aux_4.c aux_5.c aux_6.c aux_7.c aux_8.c \
-	aux_4_5.c aux_5_5.c
+SRC = main.c split.c  \
+		atol_duplicated_add_a.c \
+		quicksort.c sort_rotate.c \
+		sort3.c push_a.c movements_a.c \
+		find_top_bottom.c print_stack.c \
+		sort_all_aux.c handle_invalid.c \
+
 
 # Object files
 OBJ = $(SRC:.c=.o)

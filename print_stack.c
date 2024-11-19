@@ -20,6 +20,7 @@ void rb(t_node **stack_b)
 
 void print_stack(t_node **stack, const char *stack_name)
 {
+	(void)*stack_name;
     t_node *current = *stack;
     if (current == NULL)
     {
